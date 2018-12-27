@@ -1,11 +1,11 @@
-const todolist=require('../models/todolist')
+const todolist = require('../models/todolist')
 
 const getTodolist = async function (ctx) {
-  const id = ctx.params.id 
+  const id = ctx.params.id
   const result = await todolist.getTodolistById(id) // 通过await “同步”地返回查询结果
   ctx.body = {
     success: true,
-    result 
+    result
   }
 }
 
@@ -13,7 +13,7 @@ const createTodolist = async function (ctx) {
   const data = ctx.request.body
   const result = await todolist.createTodolist(data)
   ctx.body = {
-    success:true,
+    success: true,
     result
   }
 }
@@ -41,7 +41,7 @@ const updateTodolist = async function (ctx) {
   }
 }
 
-module.exports={
+module.exports = {
   getTodolist,
   createTodolist,
   removeTodolist,

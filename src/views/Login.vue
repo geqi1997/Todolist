@@ -1,20 +1,20 @@
 <template>
 		<div class="login-wrap">
 			<div class="login-html">
-				<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">登录</label>
-				<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">注册</label>
+				<input id="tab-1" type="radio" name="tab" class="sign-in" checked /><label for="tab-1" class="tab">登录</label>
+				<input id="tab-2" type="radio" name="tab" class="sign-up" /><label for="tab-2" class="tab">注册</label>
 				<div class="login-form">
 					<div class="sign-in-htm">
 						<div class="group">
 							<label for="user" class="label">用户名</label>
-							<input id="user"  v-model="account" type="text" class="input">
+							<input id="user"  v-model="account" type="text" class="input" />
 						</div>
 						<div class="group">
 							<label for="pass" class="label">密码</label>
-							<input id="pass"  v-model="password" type="password" class="input" data-type="password" @keyup.enter.native="loginToDo">
+							<input id="pass"  v-model="password" type="password" class="input" data-type="password" @keyup.enter.native="loginToDo" />
 						</div>
 						<div class="group">
-							<input type="submit" class="button" value="登录" @click="loginToDo">
+							<input type="submit" class="button" value="登录" @click="loginToDo" />
 						</div>
 						<div class="hr"></div>
 						<div class="foot-lnk">
@@ -24,18 +24,18 @@
 					<div class="sign-up-htm">
 						<div class="group">
 							<label for="user" class="label">用户名</label>
-							<input id="user" type="text" class="input"  v-model="user_name">
+							<input id="user" type="text" class="input"  v-model="user_name" />
 						</div>
 						<div class="group">
 							<label for="pass" class="label">密码</label>
-							<input id="pass" type="password"  v-model="newuserpassword" class="input" data-type="password">
+							<input id="pass" type="password"  v-model="newuserpassword" class="input" data-type="password" />
 						</div>
 						<div class="group">
 							<label for="pass" class="label">重复密码</label>
-							<input id="pass" type="password" class="input " v-model="newuserpassword1"  data-type="password">
+							<input id="pass" type="password" class="input " v-model="newuserpassword1"  data-type="password" />
 						</div>
 						<div class="group">
-							<input type="submit" class="button" value="注册" @click="register">
+							<input type="submit" class="button" value="注册" @click="register" />
 						</div>
 						<div class="hr"></div>
 						<div class="foot-lnk">
@@ -47,6 +47,7 @@
 		</div>
 </template>
 <script>
+import api from '../api/index.js'
 export default {
   data () {
     return {
@@ -63,8 +64,8 @@ export default {
         name: this.account,
         password: this.password
       }
-      const result = this.$http.post('/auth/user', obj)
-      result.then((res) => {
+      
+      api.login(obj).then((res) => {
         if (res.data.success) { 
           sessionStorage.setItem('demo-token', res.data.token)
           this.$message({ 
@@ -81,7 +82,7 @@ export default {
         this.$message.error('请求错误！')
         sessionStorage.setItem('demo-token', null) 
       })
-      return result
+      return api.login(obj)
     },
     register(){
  if(this.user_name==""||this.newuserpassword==""||this.newuserpassword1==""){
@@ -97,7 +98,7 @@ export default {
          user_name:this.user_name,
           password:this.newuserpassword
         }
-        this.$http.post('/auth/reg',data)
+        api.reg(data)
         .then((res) => {
           if (res.status === 200) {
             this.$message({
@@ -118,7 +119,7 @@ export default {
     }
   }
 </script>
-<style scoped>
-@import '../../static/css/styles.css';
+<style scoped lang="scss">
+@import "../../static/css/styles.scss";
 </style>
 
