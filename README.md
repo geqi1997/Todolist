@@ -16,7 +16,7 @@
  - scss
 ---
 ## 使用方法：
-###git clone
+### git clone
 >git clone https://github.com/geqi1997/Todolist/tree/dev1
 ### 1.1 安装
 >npm install
