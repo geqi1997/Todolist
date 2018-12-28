@@ -25,7 +25,7 @@
 ### 1.2 配置数据库(打开/server/config/db.js）
 >修改如下const sequelize = new Sequelize('数据库', '数据库用户名', '数据库密码', {})
 ### 1.3 项目启动
->由于是前后端分离，所以分别用git 命令启动前台（npm run dev）和后台（node app.js）然后网页打开http://localhost:8080即可放心食用
+>由于是前后端分离，所以分别用git 命令启动前台（npm run dev）和后台（node app.js）然后网页打开http://localhost:8080 即可放心食用
 ---
 ## 项目出现的问题及解决
 ### 1.1 运用sequelize自动生成表结构
