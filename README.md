@@ -1,5 +1,5 @@
 # VUE+Koa2+Mysql+JWT实现todolist
-----------
+
 ## 项目说明：
 >作为我学习的练手项目，从0开始构建一个数据通过Koa2提供API的形式获取，页面通过Vue渲染的todolist。学习了Vue构建单页面的一些知识以及前端路由的使用、Koa如何提供API接口，如何进行访问过滤（路由）、验证（JSON-WEB-TOKEN）以及Sequelize操作MySQL数据库的一些知识和技巧
 ---
