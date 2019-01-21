@@ -1,13 +1,13 @@
 <template>
   <el-row class="content">
-    <el-col :xs="{span:20,offset:2}" :sm="{span:8,offset:8}">
+    <el-col :xs="{span:20,offset:2}" :sm="{span:8,offset:8}" class="bg">
       <el-button size="small" @click="logout">注销</el-button>
-      <span>
+      <span >
         欢迎：{{name}}！你的待办事项是：
       </span>
       <el-input placeholder="请输入待办事项" v-model="todos" @keyup.enter.native="addTodos"></el-input>
       <el-tabs v-model="activeName">
-        <el-tab-pane label="待办事项" name="first">
+        <el-tab-pane label="待办事项" name="first" >
           <el-col :xs="24">
             <template v-if="!Done">
               <template v-for="(item, index) in list">
@@ -47,6 +47,7 @@
       </el-tabs>
     </el-col>
   </el-row>
+
 </template>
 <script>
 import jwt from 'jsonwebtoken'
@@ -191,6 +192,20 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+.content{
+  position: fixed;
+  margin-top: 50px;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color:#ddd;
+  background: url("../../static/img/preview.jpg")no-repeat;
+  background-size: cover;
+}
+.bg{
+  margin-top:100px; 
+}
 .el-input {
   margin: 20px auto;
 }
@@ -205,7 +220,6 @@ export default {
   font-size: 20px;
   &.finished {
   text-decoration: line-through;
-  color: #ddd;
 }
 }
 }
